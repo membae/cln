@@ -17,4 +17,17 @@ class User(db.Model,SerializerMixin):
     role=db.Column(db.String,nullable=False)
     
     
+    doctor=db.relationship("Doctor", back_populates="user")
+    
+ 
+ 
+class Doctor(db.Model,SerializerMixin):
+    __tablename__="doctors"
+    
+    id=db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    specialty=db.Column(db.String, nullable=False)
+    available=db.Column(db.Boolean, default=True)
+    
+    user=db.relationship('User',back_populates="doctor")  
+    
     
