@@ -30,4 +30,15 @@ class Doctor(db.Model,SerializerMixin):
     
     user=db.relationship('User',back_populates="doctor")  
     
+
+class Patient(db.Model,SerializerMixin):
+    __tablename__="patients"
     
+    id=db.Column(db.Integer,primary_key=True)
+    first_name=db.Column(db.String,nullable=False)
+    last_name=db.Column(db.String,nullable=False) 
+    email=db.Column(db.String,nullable=False,unique=True)
+    gender=db.Column(db.String,nullable=False)
+    phone=db.Column(db.Integer,nullable=False)
+    age=db.Column(db.Integer, nullable=False)
+    address=db.Column(db.String,nullable=False)    
